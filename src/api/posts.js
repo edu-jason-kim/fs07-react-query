@@ -1,7 +1,8 @@
 import { BASE_URL } from ".";
 
-export const getPosts = async () => {
-  const response = await fetch(BASE_URL + "/posts");
+export const getPosts = async (page = 0, pageLimit = 10) => {
+  const API_URL = `${BASE_URL}/posts?page=${page}&limit=${pageLimit}`;
+  const response = await fetch(API_URL);
   return response.json();
 };
 

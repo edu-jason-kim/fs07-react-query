@@ -13,7 +13,7 @@ export default function HomePage() {
 
   const result = useQuery({
     queryKey: [QUERY_KEYS.POSTS],
-    queryFn: getPosts,
+    queryFn: () => getPosts(),
     staleTime: 60000,
   });
 
