@@ -2,12 +2,13 @@ import { useQuery } from "@tanstack/react-query";
 import { NavLink } from "react-router";
 import { getPostsByUsername } from "../api";
 import Feed from "../components/Feed";
+import QUERY_KEYS from "../queryKey";
 
 export default function TestPage() {
-  const username = "";
+  const username = "codeit";
 
   const { data, isLoading, isError, error } = useQuery({
-    queryKey: ["posts", username],
+    queryKey: [QUERY_KEYS.POSTS, username],
     queryFn: ({ queryKey }) => {
       const [_, username] = queryKey;
       return getPostsByUsername(username);
