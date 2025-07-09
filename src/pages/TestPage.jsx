@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { NavLink } from "react-router";
 import { getPosts } from "../api";
 
-export default function HomePage() {
+export default function TestPage() {
   const result = useQuery({
     queryKey: ["posts"],
     queryFn: getPosts,
@@ -16,9 +16,9 @@ export default function HomePage() {
 
   return (
     <div>
-      <h1>Hello React Query</h1>
+      <h1>Test Page!</h1>
 
-      <NavLink to="/test">테스트 페이지로 이동</NavLink>
+      <NavLink to="/">홈 페이지로 이동</NavLink>
     </div>
   );
 }
