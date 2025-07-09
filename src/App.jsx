@@ -4,6 +4,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import HomePage from "./pages/HomePage";
 import TestPage from "./pages/TestPage";
 import PaginationPage from "./pages/PaginationPage";
+import InfinitePage from "./pages/InfinitePage";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "/pagination",
     element: <PaginationPage />,
+  },
+  {
+    path: "/infinite",
+    element: <InfinitePage />,
   },
 ]);
 
