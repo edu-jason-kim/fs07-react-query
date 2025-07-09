@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { NavLink } from "react-router";
-import { getPosts, uploadPost } from "../api";
+import { getPosts, uploadPost } from "../api/posts";
 import Feed from "../components/Feed";
 import QUERY_KEYS from "../queryKey";
 

@@ -1,12 +1,24 @@
 import { useQuery } from "@tanstack/react-query";
 import { NavLink } from "react-router";
-import { getPostsByUsername } from "../api";
+import { getUserByUsername } from "../api/users";
+import { getPostsByUsername } from "../api/posts";
 import Feed from "../components/Feed";
 import QUERY_KEYS from "../queryKey";
 
 export default function TestPage() {
   const username = "codeit";
 
+  // 가정:
+  // 1. 사용자 정보를 먼저 가지고 온 뒤
+  const { data: userData } = useQuery({
+    queryKey: [QUERY_KEYS.USERS, username],
+    queryFn: ({ queryKey }) => {
+      const [_, username] = queryKey;
+      return getUserByUsername(username);
+    },
+  });
+
+  // 2. 가지고 온 사용자 정보로, 해당 사용자의 피드 리스트를 불러온다
   const { data, isLoading, isError, error } = useQuery({
     queryKey: [QUERY_KEYS.POSTS, username],
     queryFn: ({ queryKey }) => {
@@ -14,6 +26,7 @@ export default function TestPage() {
       return getPostsByUsername(username);
     },
     staleTime: 60000,
+    enabled: !!userData?.id,
   });
 
   return (
